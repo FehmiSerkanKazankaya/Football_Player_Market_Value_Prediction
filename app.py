@@ -4,7 +4,7 @@ import pickle
 
 
 # Modeli yükle
-with open('deneme\best_xgboost_modelvsc89.pkl', 'rb') as f:
+with open('C:\Users\SERKAN\OneDrive\Masaüstü\vsc son deneme\deneme\best_xgboost_modelvsc89.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Sayfa yapılandırması
