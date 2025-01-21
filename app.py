@@ -24,7 +24,7 @@ model = joblib.load(BytesIO(response.content))
 st.set_page_config(page_title="Footballer Market Value Prediction", layout="centered")
 
 # Girişe fotoğraf ekleme
-st.image("C:/Users/SERKAN/OneDrive/Masaüstü/vsc son deneme/deneme/pic1.png", use_container_width=True)
+st.image("pic1.png", use_container_width=True)
 
 
 
