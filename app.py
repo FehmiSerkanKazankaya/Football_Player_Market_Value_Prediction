@@ -1,9 +1,11 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import pickle
+
 
 # Modeli yükle
-model = joblib.load('best_xgboost_modelvsc1.joblib')
+with open('deneme\best_xgboost_modelvsc89.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 # Sayfa yapılandırması
 st.set_page_config(page_title="Footballer Market Value Prediction", layout="centered")
