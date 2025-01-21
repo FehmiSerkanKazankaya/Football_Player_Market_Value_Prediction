@@ -4,14 +4,15 @@ import pickle
 
 
 # Modeli yükle
-with open('C:\Users\SERKAN\OneDrive\Masaüstü\vsc son deneme\deneme\best_xgboost_modelvsc89.pkl', 'rb') as f:
+with open('C:\\Users\\SERKAN\\OneDrive\\Masaüstü\\vsc son deneme\\deneme\\best_xgboost_modelvsc89.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Sayfa yapılandırması
 st.set_page_config(page_title="Footballer Market Value Prediction", layout="centered")
 
 # Girişe fotoğraf ekleme
-st.image("pic1.png", use_container_width=True)
+st.image("C:/Users/SERKAN/OneDrive/Masaüstü/vsc son deneme/deneme/pic1.png", use_container_width=True)
+
 
 
 # Streamlit başlık
