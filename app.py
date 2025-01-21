@@ -2,12 +2,17 @@ import streamlit as st
 import pandas as pd
 import pickle
 import joblib
-
+from io import BytesIO
 
 import requests
 
-model = joblib.load('C:/Users/SERKAN/OneDrive/Masaüstü/vsc son deneme/deneme/best_xgboost_modelvsc89.joblib')
+#model = joblib.load('C:/Users/SERKAN/OneDrive/Masaüstü/vsc son deneme/deneme/best_xgboost_modelvsc89.joblib')
+# GitHub'dan dosyayı indirme
+url = 'https://github.com/FehmiSerkanKazankaya/deneme/raw/main/best_xgboost_modelvsc89.joblib'
+response = requests.get(url)
 
+# Modeli yükleme
+model = joblib.load(BytesIO(response.content))
 
 
 
