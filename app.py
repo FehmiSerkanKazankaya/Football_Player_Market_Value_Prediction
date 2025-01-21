@@ -3,9 +3,32 @@ import pandas as pd
 import pickle
 
 
+import requests
+
+# GitHub'dan raw dosya bağlantısını al
+url = 'https://raw.githubusercontent.com/FehmiSerkanKazankaya/deneme/main/best_xgboost_modelvsc89.pkl'
+
+# Dosyayı indirin
+response = requests.get(url)
+
+if response.status_code == 200:
+    # Dosyayı geçici olarak kaydedin
+    with open('best_xgboost_modelvsc89.pkl', 'wb') as f:
+        f.write(response.content)
+
+    # Dosyayı yükleyin
+    with open('best_xgboost_modelvsc89.pkl', 'rb') as f:
+        model = pickle.load(f)
+    print("Model başarıyla yüklendi.")
+else:
+    print("Dosya indirilemedi. Hata kodu:", response.status_code)
+
+
+
+
 # Modeli yükle
-with open('C:\\Users\\SERKAN\\OneDrive\\Masaüstü\\vsc son deneme\\deneme\\best_xgboost_modelvsc89.pkl', 'rb') as f:
-    model = pickle.load(f)
+#with open('C:\\Users\\SERKAN\\OneDrive\\Masaüstü\\vsc son deneme\\deneme\\best_xgboost_modelvsc89.pkl', 'rb') as f:
+#    model = pickle.load(f)
 
 # Sayfa yapılandırması
 st.set_page_config(page_title="Footballer Market Value Prediction", layout="centered")
