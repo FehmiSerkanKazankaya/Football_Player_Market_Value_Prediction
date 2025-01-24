@@ -6,33 +6,24 @@ from io import BytesIO
 
 import requests
 
-#model = joblib.load('C:/Users/SERKAN/OneDrive/Masaüstü/vsc son deneme/deneme/best_xgboost_modelvsc89.joblib')
-# GitHub'dan dosyayı indirme
 url = 'https://github.com/FehmiSerkanKazankaya/deneme/raw/main/best_xgboost_modelvsc89.joblib'
 response = requests.get(url)
 
-# Modeli yükleme
 model = joblib.load(BytesIO(response.content))
 
 
-
-# Modeli yükle
-#with open('C:\\Users\\SERKAN\\OneDrive\\Masaüstü\\vsc son deneme\\deneme\\best_xgboost_modelvsc89.pkl', 'rb') as f:
-#    model = pickle.load(f)
-
-# Sayfa yapılandırması
 st.set_page_config(page_title="Footballer Market Value Prediction", layout="centered")
 
-# Girişe fotoğraf ekleme
+
 st.image("pic1.png", use_container_width=True)
 
 
 
-# Streamlit başlık
+
 st.title("Footballer Market Value Prediction")
 
 
-# Kullanıcıdan giriş alınacak alanlar
+
 ovr = st.number_input("OVR", min_value=0, max_value=100, value=50)
 pac = st.number_input("PAC", min_value=0, max_value=100, value=50)
 sho = st.number_input("SHO", min_value=0, max_value=100, value=50)
@@ -64,7 +55,7 @@ age = st.number_input("Age", min_value=16, max_value=45, value=25)
 gk_features = st.number_input("GK Features", min_value=0, max_value=500, value=50)
 ovr_pac = st.number_input("OVR_PAC", min_value=0, max_value=10000, value=50)
 
-# Lig seçimi
+
 league = st.selectbox("League", [
     'League_Bundesliga', 'League_Bundesliga 2', 'League_EFL Championship',
     'League_Eredivisie', 'League_LALIGA EA SPORTS', 'League_LALIGA HYPERMOTION',
@@ -74,22 +65,22 @@ league = st.selectbox("League", [
     'League_Trendyol Süper Lig'
 ])
 
-# Pozisyon kategorisi
+
 position_category = st.selectbox("Position Category", [
     "Position_Category_Attacker",'Position_Category_Defender', 'Position_Category_Goalkeeper', 'Position_Category_Midfielder'
 ])
 
-# Bölge seçimi
+
 region = st.selectbox("Region", ['Europe', 'Non-Europe'])
 
-# Weak foot ve Skill moves
+
 weak_foot = st.selectbox("Weak Foot", [1, 2, 3, 4, 5])
 skill_moves = st.selectbox("Skill Moves", [1, 2, 3, 4, 5])
 
-# Yaş grubu seçimi
+
 age_group = st.selectbox("Age Group", ['Teen','Young Adult', 'Adult'])
 
-# Giriş verilerini birleştirin
+
 input_data_dict = {
     'OVR': ovr,
     'PAC': pac,
@@ -129,13 +120,13 @@ input_data_dict = {
     f'Age_Group_{age_group.replace(" ", "_")}': 1
 }
 
-# DataFrame'e dönüştür
+
 input_data = pd.DataFrame([input_data_dict], columns=model.feature_names_in_).fillna(0)
 
-# Predict
+
 if st.button("Predicted Market Value"):
     prediction = model.predict(input_data)
-    #st.write(f"Predicted Market Value: {prediction[0]:,.2f} €")
+    
     st.balloons()
     st.markdown(f"""
     <div style="font-size:30px; font-weight:bold; color:#4CAF50; text-align:center;">
