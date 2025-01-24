@@ -1,5 +1,0 @@
-pickle-mixin
-joblib
-requests
-streamlit
-xgboost
